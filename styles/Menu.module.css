@@ -1,0 +1,29 @@
+.wrapper {
+  height: 2.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 1.5rem;
+  filter: opacity(50%);
+  cursor: pointer;
+}
+
+.wrapper:hover {
+  filter: none;
+}
+
+.active {
+  border-left: 4px solid var(--primary);
+  color: var(--white);
+  filter: none;
+}
+
+.wrapper img {
+  width: 20.5px;
+  margin-right: 9.75px;
+}
+
+.wrapper span {
+  font-weight: 500;
+  font-size: var(--sub-title-font-size);
+}
