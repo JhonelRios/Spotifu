@@ -1,0 +1,30 @@
+.header {
+  position: relative;
+  display: flex;
+  background-color: var(--secondary-black);
+  width: calc(100% - 224px);
+  height: 60px;
+  position: absolute;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.header form {
+  display: flex;
+  align-items: center;
+}
+
+.header input {
+  padding: 4px 32px;
+  border: 1px solid transparent;
+  border-radius: 70px;
+  height: 30px;
+  width: 200px;
+}
+
+.header img {
+  width: 20px;
+  filter: invert(75%);
+  position: absolute;
+  left: 40px;
+}

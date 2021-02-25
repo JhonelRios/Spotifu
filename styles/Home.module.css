@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+}
+
+.main {
+  position: relative;
+  top: 60px;
+  background-color: var(--secondary-black);
+  min-width: calc(100vw - 224px);
+  min-height: calc(100vh - 60px);
+}

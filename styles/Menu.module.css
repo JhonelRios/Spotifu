@@ -5,7 +5,7 @@
   align-items: center;
   padding-left: 1.5rem;
   filter: opacity(50%);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .wrapper:hover {

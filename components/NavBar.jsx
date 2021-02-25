@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Menu from 'components/Menu';
 
 import styles from 'styles/NavBar.module.css';
@@ -8,9 +9,11 @@ export default function NavBar() {
       <img className={styles.logo} src="/logo.svg" alt="spotifu" />
 
       <div className={styles.navigation}>
-        <Menu icon="home" name="Inicio" active />
-        <Menu icon="search" name="Buscar" />
-        <Menu icon="premium" name="Premium" />
+        <Link href="/">
+          <a>
+            <Menu icon="home" name="Inicio" active />
+          </a>
+        </Link>
       </div>
 
       <div className={styles.library}>
