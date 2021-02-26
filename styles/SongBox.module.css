@@ -1,0 +1,30 @@
+.box {
+  min-width: 166px;
+  margin-right: 16px;
+}
+
+.box img {
+  width: 100%;
+}
+
+.description {
+  margin-top: 8px;
+  max-width: 100%;
+}
+
+.description h3 {
+  font-size: var(--sub-title-font-size);
+  color: var(--white);
+  font-weight: 800;
+  line-height: 22px;
+}
+
+.description p {
+  color: var(--grey);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.description p span {
+  text-transform: uppercase;
+}

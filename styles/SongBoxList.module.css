@@ -1,0 +1,6 @@
+.list {
+  margin: 24px 0;
+  display: flex;
+  width: calc(100vw - 256px);
+  overflow: auto;
+}
