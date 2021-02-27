@@ -1,11 +1,18 @@
 import Head from 'next/head';
 
+import getFeaturedPlaylists from 'utils/api';
+
 import Layout from 'components/Layout';
 import SongBoxList from 'components/SongBoxList';
 
 import styles from 'styles/Home.module.css';
+import { useEffect } from 'react';
 
 export default function Home() {
+  useEffect(() => {
+    getFeaturedPlaylists();
+  }, []);
+
   return (
     <>
       <Head>
