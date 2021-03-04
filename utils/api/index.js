@@ -25,9 +25,26 @@ async function getToken() {
   return data.access_token;
 }
 
-export default async function getFeaturedPlaylists() {
+export default async function getPlaylists(type, country = 'US') {
   const token = await getToken();
-  const URL = 'https://api.spotify.com/v1/browse/featured-playlists';
+  let URL = '';
+
+  switch (type) {
+    case 'featured':
+      URL = `https://api.spotify.com/v1/browse/featured-playlists?country=${country}&limit=10`;
+      break;
+
+    case 'new':
+      URL = `https://api.spotify.com/v1/browse/new-releases?country=${country}&limit=10`;
+      break;
+
+    case 'latin':
+      URL = `https://api.spotify.com/v1/browse/categories/latin/playlists?limit=10`;
+      break;
+
+    default:
+      throw new Error('Browse type error');
+  }
 
   const { data } = await axios.get(URL, {
     headers: {
@@ -35,5 +52,9 @@ export default async function getFeaturedPlaylists() {
     },
   });
 
-  console.log(data);
+  if (!data) {
+    throw new Error('Get Token error');
+  }
+
+  return data;
 }

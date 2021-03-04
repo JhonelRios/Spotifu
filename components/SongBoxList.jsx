@@ -2,11 +2,11 @@ import SongBox from 'components/SongBox';
 
 import styles from 'styles/SongBoxList.module.css';
 
-export default function SongBoxList() {
+export default function SongBoxList({ playlists }) {
   return (
     <section className={styles.list}>
-      {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-        <SongBox key={num} />
+      {playlists.items.map((item) => (
+        <SongBox src={item.images[0].url} key={item.id} />
       ))}
     </section>
   );
