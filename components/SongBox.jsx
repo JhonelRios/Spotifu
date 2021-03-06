@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import styles from 'styles/SongBox.module.css';
 
 // eslint-disable-next-line no-unused-vars
@@ -25,11 +27,16 @@ export default function SongBox({ src, name, description, id }) {
 
   return (
     <div className={styles.box}>
-      <img src={src} alt="song" />
-      <div className={styles.description}>
-        <h3>{name}</h3>
-        {description && <p>{formatDescription(description)}</p>}
-      </div>
+      <Link href="#!">
+        <a>
+          <div className={styles.box_selector} />
+          <img src={src} alt="song" />
+          <div className={styles.description}>
+            <h3>{name}</h3>
+            {description && <p>{formatDescription(description)}</p>}
+          </div>
+        </a>
+      </Link>
     </div>
   );
 }

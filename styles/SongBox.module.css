@@ -1,10 +1,26 @@
 .box {
-  min-width: 166px;
-  margin-right: 16px;
+  margin-right: 6px;
+  position: relative;
+  padding: 5px;
+}
+
+.box_selector {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(231, 225, 225, 0);
+  border-radius: 4px;
+}
+
+.box_selector:hover {
+  background-color: rgba(231, 225, 225, 0.1);
+  transition: 0.3s all;
 }
 
 .box img {
-  width: 100%;
+  width: 166px;
 }
 
 .description {
