@@ -1,15 +1,34 @@
 import styles from 'styles/SongBox.module.css';
 
-export default function SongBox({ src }) {
+// eslint-disable-next-line no-unused-vars
+export default function SongBox({ src, name, description, id }) {
+  const formatDescription = (text = '') => {
+    const pointIndex = text.indexOf('.');
+    let formattedText = text;
+
+    if (pointIndex !== -1) {
+      formattedText = formattedText.substring(0, pointIndex + 1);
+    }
+
+    if (formattedText.includes('<')) {
+      const tagIndex = text.indexOf('<');
+
+      formattedText = formattedText.substr(0, tagIndex - 1);
+    }
+
+    if (!formattedText.includes('.')) {
+      formattedText += '.';
+    }
+
+    return formattedText;
+  };
+
   return (
     <div className={styles.box}>
       <img src={src} alt="song" />
       <div className={styles.description}>
-        <h3>Nombre</h3>
-        <p>Los éxitos de reggaetón del momento.</p>
-        <p>
-          2,611,830 <span>SEGUIDORES</span>
-        </p>
+        <h3>{name}</h3>
+        {description && <p>{formatDescription(description)}</p>}
       </div>
     </div>
   );
