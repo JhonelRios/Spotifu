@@ -27,7 +27,7 @@ export default function SongBox({ src, name, description, id }) {
 
   return (
     <div className={styles.box}>
-      <Link href="#!">
+      <Link href="/playlistInfo">
         <a>
           <div className={styles.box_selector} />
           <img src={src} alt="song" />
