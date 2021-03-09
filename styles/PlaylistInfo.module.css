@@ -28,22 +28,26 @@
 }
 
 .container {
-  margin: 1rem 0;
-  margin-left: 50px;
+  margin-top: 1rem;
+  height: calc(100% - 60px);
 }
 
 .info {
   display: flex;
   color: var(--white);
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .info img {
   width: 220px;
+  height: 220px;
 }
 
 .description {
   align-self: flex-end;
   margin-left: 10px;
+  max-width: 40%;
 }
 
 .description h1 {
@@ -52,4 +56,17 @@
 
 .description p {
   line-height: 22px;
+}
+
+.description p span {
+  color: var(--grey);
+}
+
+.tracks {
+  height: calc(100% - 232px);
+}
+
+.track_list {
+  height: calc(100% - 22px);
+  overflow: auto;
 }

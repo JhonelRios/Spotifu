@@ -1,0 +1,28 @@
+.wrapper {
+  background-color: var(--secondary-black);
+  /* background-color: red; */
+  color: var(--white);
+  height: 56px;
+  font-size: 14px;
+  line-height: 22px;
+  margin-left: -32px;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 20px repeat(4, 1fr);
+  border-bottom: 1px solid rgba(125, 125, 125, 0.2);
+}
+
+.wrapper p {
+  display: flex;
+  align-items: center;
+}
+
+.length {
+  color: var(--grey);
+}
+
+.header {
+  height: 22px;
+  color: var(--grey);
+  border-top: 1px solid rgba(125, 125, 125, 0.2);
+}

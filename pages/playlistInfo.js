@@ -1,4 +1,5 @@
 import Layout from 'components/Layout';
+import Track from 'components/Track';
 import Link from 'next/link';
 
 import styles from 'styles/PlaylistInfo.module.css';
@@ -30,8 +31,31 @@ export default function PlaylistInfo() {
               Perspiciatis, error?
             </p>
             <p>
-              Creador - <span>4302 likes</span>
+              Creador<span> - 4302 likes</span>
             </p>
+          </div>
+        </div>
+
+        <div className={styles.tracks}>
+          <Track
+            number="#"
+            title="TITLE"
+            artist="ARTIST"
+            album="ALBUM"
+            length="LENGTH"
+            header
+          />
+
+          <div className={styles.track_list}>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+              <Track
+                number={num}
+                title="Dakiti"
+                artist="Bad Bunny"
+                album="YALQSMDLG"
+                length="3:21"
+              />
+            ))}
           </div>
         </div>
       </section>
