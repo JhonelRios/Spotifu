@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import getPlaylists from 'utils/api';
+import { getPlaylists } from 'utils/api';
 
 import Layout from 'components/Layout';
 import SongBoxList from 'components/SongBoxList';

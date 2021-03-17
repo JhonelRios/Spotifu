@@ -5,7 +5,10 @@ const CLIENT_SECRET = 'bc73e4f97ba44d93a6329ac0d202ef60';
 
 async function getToken() {
   const URL_TOKEN = 'https://accounts.spotify.com/api/token';
-  const clientEncoded = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
+  // const clientEncoded = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
+  const clientEncoded = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString(
+    'base64'
+  );
 
   const { data } = await axios.post(
     URL_TOKEN,
@@ -25,7 +28,7 @@ async function getToken() {
   return data.access_token;
 }
 
-export default async function getPlaylists(type, country = 'US') {
+export async function getPlaylists(type, country = 'US') {
   const token = await getToken();
   let URL = '';
 
@@ -45,6 +48,23 @@ export default async function getPlaylists(type, country = 'US') {
     default:
       throw new Error('Browse type error');
   }
+
+  const { data } = await axios.get(URL, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!data) {
+    throw new Error('Get Token error');
+  }
+
+  return data;
+}
+
+export async function getPlaylistInfo(id) {
+  const token = await getToken();
+  const URL = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=15`;
 
   const { data } = await axios.get(URL, {
     headers: {

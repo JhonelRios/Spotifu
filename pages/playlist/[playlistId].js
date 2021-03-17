@@ -1,10 +1,30 @@
+import Link from 'next/link';
+import { getPlaylistInfo } from 'utils/api';
+
 import Layout from 'components/Layout';
 import Track from 'components/Track';
-import Link from 'next/link';
 
 import styles from 'styles/PlaylistInfo.module.css';
 
-export default function PlaylistInfo() {
+export default function PlaylistInfo({ tracks }) {
+  console.log(tracks);
+
+  const formatArtists = (artists = []) => {
+    const artistsString = artists.reduce(
+      (acc, curr) => `${acc.name}${curr.name}, `,
+      { name: '' }
+    );
+
+    return artistsString.slice(0, -2);
+  };
+
+  const formatLength = (ms) => {
+    const minutes = Math.floor(ms / 60000);
+    const seconds = ((ms % 60000) / 1000).toFixed(0);
+
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
   return (
     <Layout>
       <div className={styles.header}>
@@ -46,19 +66,29 @@ export default function PlaylistInfo() {
             header
           />
 
-          <div className={styles.track_list}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-              <Track
-                number={num}
-                title="Dakiti"
-                artist="Bad Bunny"
-                album="YALQSMDLG"
-                length="3:21"
-              />
-            ))}
-          </div>
+          {tracks.items.map(({ track }, index) => (
+            <Track
+              number={index + 1}
+              title={track.name}
+              artist={formatArtists(track.artists)}
+              album={track.album.name}
+              length={formatLength(track.duration_ms)}
+              key={track.id}
+            />
+          ))}
         </div>
       </section>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ params }) {
+  const { playlistId } = params;
+  const tracks = await getPlaylistInfo(playlistId);
+
+  return {
+    props: {
+      tracks,
+    },
+  };
 }
