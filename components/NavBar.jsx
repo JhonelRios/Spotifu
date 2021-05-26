@@ -20,16 +20,32 @@ export default function NavBar() {
         </Link>
       </div>
 
-      <div className={styles.library}>
-        <h2 className={styles.sub_title}>Tu Biblioteca</h2>
+      <footer className={styles.footer}>
+        <p>
+          Made by <span>Jhonel Rios</span>
+        </p>
+
         <ul>
-          <li>Creada para ti</li>
-          <li>Recientes</li>
-          <li>Tus Me Gusta</li>
-          <li>Artistas</li>
-          <li>Podcasts</li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/jhonelrios/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/icons/linkedin.svg" alt="Linkedin" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/JhonelRios"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/icons/github.svg" alt="Github" />
+            </a>
+          </li>
         </ul>
-      </div>
+      </footer>
     </nav>
   );
 }
