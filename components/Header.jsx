@@ -16,10 +16,8 @@ export default function Header() {
 
     getSearchResults(searchText)
       .then((res) => setResults(res))
-      .catch((err) => console.log(err));
+      .catch((err) => new Error(err));
   };
-
-  console.log(results);
 
   return (
     <header className={styles.header}>
@@ -36,9 +34,6 @@ export default function Header() {
 
       {Object.keys(results).length && show && (
         <div className={styles.results}>
-          <a href="http://google.com" target="_blank" rel="noopener noreferrer">
-            Google
-          </a>
           {results.tracks.items.map((track) => (
             <a
               className={styles.result_box}
