@@ -40,6 +40,7 @@ export default function Header() {
               href={track.external_urls.spotify}
               target="_blank"
               rel="noopener noreferrer"
+              key={track.id}
             >
               <img
                 className={styles.cover}

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const CLIENT_ID = 'a385c9f8283342f59358a3618f73c69d';
-const CLIENT_SECRET = 'bc73e4f97ba44d93a6329ac0d202ef60';
+const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
+const CLIENT_SECRET = process.env.NEXT_PUBLIC_CLIENT_SECRET;
 
 async function getToken() {
   const URL_TOKEN = 'https://accounts.spotify.com/api/token';
