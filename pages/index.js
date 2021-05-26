@@ -33,29 +33,36 @@ export default function Home() {
         <title>Spotifu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Layout>
+        <div className={styles.container}>
+          <h1 className={styles.title}>Home</h1>
 
-      {loading ? (
-        <h1>Cargando..</h1>
-      ) : (
-        <Layout>
-          <div className={styles.container}>
-            <h1 className={styles.title}>Inicio</h1>
-
-            <h2 className={styles.subtitle}>Top playlists</h2>
+          <h2 className={styles.subtitle}>Top playlists</h2>
+          {loading ? (
+            <h5>Loading...</h5>
+          ) : (
             <SongBoxList playlists={topPlaylists} />
+          )}
 
-            <h2 className={styles.subtitle} style={{ marginTop: '40px' }}>
-              Latin playlists
-            </h2>
+          <h2 className={styles.subtitle} style={{ marginTop: '40px' }}>
+            Latin playlists
+          </h2>
+          {loading ? (
+            <h5>Loading...</h5>
+          ) : (
             <SongBoxList playlists={latinPlaylists} />
+          )}
 
-            <h2 className={styles.subtitle} style={{ marginTop: '40px' }}>
-              New Release
-            </h2>
+          <h2 className={styles.subtitle} style={{ marginTop: '40px' }}>
+            New Release
+          </h2>
+          {loading ? (
+            <h5>Loading...</h5>
+          ) : (
             <SongBoxList playlists={newReleases} />
-          </div>
-        </Layout>
-      )}
+          )}
+        </div>
+      </Layout>
     </>
   );
 }

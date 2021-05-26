@@ -53,6 +53,9 @@
 
 .description h1 {
   font-size: 4rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .description p {

@@ -1,29 +1,23 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getPlaylistInfo } from 'utils/api';
+import { useRouter } from 'next/router';
+import { getPlaylistInfo, getPlaylistTracks } from 'utils/api';
+import { formatArtists, formatLength, formatNumber } from 'utils/formatters';
 
 import Layout from 'components/Layout';
 import Track from 'components/Track';
 
 import styles from 'styles/PlaylistInfo.module.css';
 
-export default function PlaylistInfo({ tracks }) {
-  console.log(tracks);
+export default function PlaylistInfo({ info }) {
+  const { query } = useRouter();
+  const [tracks, setTracks] = useState([]);
 
-  const formatArtists = (artists = []) => {
-    const artistsString = artists.reduce(
-      (acc, curr) => `${acc.name}${curr.name}, `,
-      { name: '' }
-    );
-
-    return artistsString.slice(0, -2);
-  };
-
-  const formatLength = (ms) => {
-    const minutes = Math.floor(ms / 60000);
-    const seconds = ((ms % 60000) / 1000).toFixed(0);
-
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  };
+  useEffect(() => {
+    getPlaylistTracks(query.playlistId)
+      .then((res) => setTracks(res))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <Layout>
@@ -40,18 +34,13 @@ export default function PlaylistInfo({ tracks }) {
 
       <section className={styles.container}>
         <div className={styles.info}>
-          <img
-            src="https://i.scdn.co/image/ab67616d0000b2730aedc3771cdda7f51002b8c4"
-            alt="cover prueba"
-          />
+          <img src={info.images[0].url} alt={`${info.name} cover`} />
           <div className={styles.description}>
-            <h1>Nombre</h1>
+            <h1>{info.name}</h1>
+            <p>{info.description}</p>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Perspiciatis, error?
-            </p>
-            <p>
-              Creador<span> - 4302 likes</span>
+              {info.owner.display_name}
+              <span> - {formatNumber(info.followers.total)} followers</span>
             </p>
           </div>
         </div>
@@ -66,16 +55,20 @@ export default function PlaylistInfo({ tracks }) {
             header
           />
 
-          {tracks.items.map(({ track }, index) => (
-            <Track
-              number={index + 1}
-              title={track.name}
-              artist={formatArtists(track.artists)}
-              album={track.album.name}
-              length={formatLength(track.duration_ms)}
-              key={track.id}
-            />
-          ))}
+          {tracks.length !== 0 ? (
+            tracks.items.map(({ track }, index) => (
+              <Track
+                number={index + 1}
+                title={track.name}
+                artist={formatArtists(track.artists)}
+                album={track.album.name}
+                length={formatLength(track.duration_ms)}
+                key={track.id}
+              />
+            ))
+          ) : (
+            <h5>Loading...</h5>
+          )}
         </div>
       </section>
     </Layout>
@@ -84,11 +77,11 @@ export default function PlaylistInfo({ tracks }) {
 
 export async function getServerSideProps({ params }) {
   const { playlistId } = params;
-  const tracks = await getPlaylistInfo(playlistId);
+  const info = await getPlaylistInfo(playlistId);
 
   return {
     props: {
-      tracks,
+      info,
     },
   };
 }

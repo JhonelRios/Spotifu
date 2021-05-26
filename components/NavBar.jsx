@@ -6,7 +6,11 @@ import styles from 'styles/NavBar.module.css';
 export default function NavBar() {
   return (
     <nav className={styles.navbar}>
-      <img className={styles.logo} src="/logo.svg" alt="spotifu" />
+      <Link href="/">
+        <a>
+          <img className={styles.logo} src="/logo.svg" alt="spotifu" />
+        </a>
+      </Link>
 
       <div className={styles.navigation}>
         <Link href="/">

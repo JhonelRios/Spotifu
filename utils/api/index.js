@@ -62,9 +62,43 @@ export async function getPlaylists(type, country = 'US') {
   return data;
 }
 
-export async function getPlaylistInfo(id) {
+export async function getPlaylistTracks(id) {
   const token = await getToken();
   const URL = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=15`;
+
+  const { data } = await axios.get(URL, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!data) {
+    throw new Error('Get Token error');
+  }
+
+  return data;
+}
+
+export async function getPlaylistInfo(id) {
+  const token = await getToken();
+  const URL = `https://api.spotify.com/v1/playlists/${id}`;
+
+  const { data } = await axios.get(URL, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!data) {
+    throw new Error('Get Token error');
+  }
+
+  return data;
+}
+
+export async function getSearchResults(text) {
+  const token = await getToken();
+  const URL = `https://api.spotify.com/v1/search?q=${text}&type=track&limit=3&offset=3`;
 
   const { data } = await axios.get(URL, {
     headers: {

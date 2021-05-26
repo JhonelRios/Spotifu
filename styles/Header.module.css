@@ -12,19 +12,55 @@
 .header form {
   display: flex;
   align-items: center;
+  z-index: 3;
 }
 
 .header input {
   padding: 4px 32px;
   border: 1px solid transparent;
+  box-shadow: 0 2px gray;
   border-radius: 70px;
   height: 30px;
   width: 200px;
 }
 
-.header img {
+.icon {
   width: 20px;
   filter: invert(75%);
   position: absolute;
   left: 40px;
+}
+
+.results {
+  background-color: var(--white);
+  width: 200px;
+  position: absolute;
+  top: 30px;
+  padding: 15px 5px 5px;
+  z-index: 2;
+  border-radius: 0 0 10px 10px;
+  
+}
+
+.result_box {
+  padding: 10px;
+  border-radius: 10px;
+  max-height: 80px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  border: 1px solid grey;
+}
+
+.result_box:hover {
+  background-color: var(--grey);
+}
+
+.result_box img {
+  border-radius: 5px;
+}
+
+.result_box p {
+  margin-left: 10px;
+  color: var(--secondary-black)
 }

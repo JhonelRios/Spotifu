@@ -1,9 +1,9 @@
 :root {
-  --primary: #2FB67D;
-  --white: #FFFFFF;
+  --primary: #2fb67d;
+  --white: #ffffff;
   --main-black: #030303;
   --secondary-black: #171717;
-  --grey: #7D7D7D;
+  --grey: #7d7d7d;
 
   --main-title-font-size: 2rem;
   --sub-title-font-size: 1rem;
@@ -24,4 +24,9 @@ a {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+h5 {
+  color: var(--grey);
+  margin: 2rem;
 }
