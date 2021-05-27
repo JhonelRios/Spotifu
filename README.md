@@ -1,6 +1,6 @@
 This is a Spotify clone created by using its API and Next.js
 
-You can check the project in this link [Spotifu]().
+You can check the project in this link [Spotifu](https://spotifu-rosy.vercel.app/).
 
 ## Start the project
 
