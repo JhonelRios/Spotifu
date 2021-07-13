@@ -20,19 +20,21 @@ export default function Header() {
   };
 
   return (
-    <header className={styles.header}>
-      <form onSubmit={handleSubmit} ref={formRef}>
-        <img className={styles.icon} src="/icons/search.svg" alt="search" />
-        <input
-          onFocus={() => setShow(true)}
-          onBlur={() => setTimeout(() => setShow(false), 100)}
-          name="searchText"
-          type="text"
-          placeholder="Search"
-        />
-      </form>
+    <>
+      <header className={styles.header}>
+        <form onSubmit={handleSubmit} ref={formRef} autoComplete="off">
+          <img className={styles.icon} src="/icons/search.svg" alt="search" />
+          <input
+            onFocus={() => setShow(true)}
+            onBlur={() => setTimeout(() => setShow(false), 100)}
+            name="searchText"
+            type="text"
+            placeholder="Search (Press INTRO after write)"
+          />
+        </form>
+      </header>
 
-      {Object.keys(results).length && show && (
+      {Object.keys(results).length !== 0 && show && (
         <div className={styles.results}>
           {results.tracks.items.map((track) => (
             <a
@@ -52,6 +54,6 @@ export default function Header() {
           ))}
         </div>
       )}
-    </header>
+    </>
   );
 }

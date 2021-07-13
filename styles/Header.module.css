@@ -6,13 +6,15 @@
   height: 60px;
   position: absolute;
   align-items: center;
-  padding: 0 2rem;
+  padding-left: 2rem;
+  overflow-x: hidden;
 }
 
 .header form {
   display: flex;
   align-items: center;
   z-index: 3;
+  flex: 0 0 100%;
 }
 
 .header input {
@@ -21,7 +23,7 @@
   box-shadow: 0 2px gray;
   border-radius: 70px;
   height: 30px;
-  width: 200px;
+  width: 80%;
 }
 
 .icon {
@@ -33,13 +35,14 @@
 
 .results {
   background-color: var(--white);
-  width: 200px;
+  width: calc(80% - 206px);
+  /* width: 200px; */
   position: absolute;
   top: 30px;
   padding: 15px 5px 5px;
+  margin-left: 32px;
   z-index: 2;
   border-radius: 0 0 10px 10px;
-  
 }
 
 .result_box {
@@ -50,6 +53,8 @@
   align-items: center;
   margin-top: 10px;
   border: 1px solid grey;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .result_box:hover {
@@ -62,5 +67,5 @@
 
 .result_box p {
   margin-left: 10px;
-  color: var(--secondary-black)
+  color: var(--secondary-black);
 }
