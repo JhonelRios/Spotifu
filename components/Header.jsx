@@ -20,7 +20,7 @@ export default function Header() {
   };
 
   return (
-    <>
+    <div>
       <header className={styles.header}>
         <form onSubmit={handleSubmit} ref={formRef} autoComplete="off">
           <img className={styles.icon} src="/icons/search.svg" alt="search" />
@@ -54,6 +54,6 @@ export default function Header() {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }

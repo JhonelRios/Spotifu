@@ -29,7 +29,6 @@
 
 .container {
   margin-top: 1rem;
-  height: calc(100% - 56px);
   overflow-y: auto;
 }
 
@@ -38,6 +37,7 @@
   color: var(--white);
   justify-content: center;
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 .info img {
@@ -60,6 +60,9 @@
 
 .description p {
   line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .description p span {
@@ -68,4 +71,5 @@
 
 .tracks {
   margin-top: 1.2rem;
+  width: 100%;
 }
