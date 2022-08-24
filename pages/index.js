@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [topPlaylists, setTopPlaylists] = useState({});
-  const [latinPlaylists, setLatinPlaylists] = useState({});
+  // const [latinPlaylists, setLatinPlaylists] = useState({});
   const [newReleases, setNewReleases] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -18,11 +18,11 @@ export default function Home() {
     Promise.all([
       getPlaylists('featured'),
       getPlaylists('new'),
-      getPlaylists('latin'),
-    ]).then(([featuredData, newData, latinData]) => {
+      // getPlaylists('latin'),
+    ]).then(([featuredData, newData]) => {
       setTopPlaylists(featuredData.playlists);
       setNewReleases(newData.albums);
-      setLatinPlaylists(latinData.playlists);
+      // setLatinPlaylists(latinData.playlists);
       setLoading(false);
     });
   }, []);
@@ -43,14 +43,14 @@ export default function Home() {
           <SongBoxList playlists={topPlaylists} />
         )}
 
-        <h2 className={styles.subtitle} style={{ marginTop: '40px' }}>
+        {/* <h2 className={styles.subtitle} style={{ marginTop: '40px' }}>
           Latin playlists
         </h2>
         {loading ? (
           <h5>Loading...</h5>
         ) : (
           <SongBoxList playlists={latinPlaylists} />
-        )}
+        )} */}
 
         <h2 className={styles.subtitle} style={{ marginTop: '40px' }}>
           New Release
